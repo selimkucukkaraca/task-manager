@@ -21,5 +21,11 @@ public class Task extends BaseEntity{
     @ManyToOne
     private TaskType taskType;
 
-
+    public Task(String title, String description, String imageUrl, User assigned, TaskType taskType) {
+        this.title = title;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.assigned = assigned;
+        this.taskType = taskType;
+    }
 }

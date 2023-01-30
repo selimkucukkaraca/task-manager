@@ -8,6 +8,6 @@ public class CreateTaskRequest {
     private String title;
     private String description;
     private String imageUrl;
-    private String assigned;
-    private TaskType taskType;
+    private String assignedMail;
+    private String  taskType;
 }

@@ -2,8 +2,6 @@ package com.develop.taskmanager.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
-
 
 @Getter
 @Setter

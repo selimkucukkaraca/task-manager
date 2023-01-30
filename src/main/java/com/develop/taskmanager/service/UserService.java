@@ -91,7 +91,7 @@ public class UserService {
         return userConverter.convertUserToUserDto(fromDbUser);
     }
 
-    protected User getUserByMail(String mail){
+    public User getUserByMail(String mail){
         return userRepository.findUserByMail(mail)
                 .orElseThrow(RuntimeException::new);
     }
