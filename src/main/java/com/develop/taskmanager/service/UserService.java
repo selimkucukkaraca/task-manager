@@ -11,6 +11,8 @@ import com.develop.taskmanager.repository.UserRepository;
 import com.develop.taskmanager.util.MailSendService;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 import static com.develop.taskmanager.util.MailConstant.*;
 
 @Service
@@ -37,7 +39,7 @@ public class UserService {
     public UserDto save(CreateUserRequest request){
         var saved = userConverter.toEntity(request);
 
-        if (userRepository.existsUserByMail(saved.getMail())) {
+        if (userRepository.existsUserByMail(saved.getMail()) || Objects.isNull(saved.getUserType())) {
             throw new RuntimeException();
         }
         userRepository.save(saved);
