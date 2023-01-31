@@ -9,7 +9,6 @@ import com.develop.taskmanager.model.User;
 import com.develop.taskmanager.repository.ConfirmCodeRepository;
 import com.develop.taskmanager.repository.UserRepository;
 import com.develop.taskmanager.util.MailSendService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

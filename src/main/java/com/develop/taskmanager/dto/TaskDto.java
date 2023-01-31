@@ -13,6 +13,7 @@ public class TaskDto {
     private String imageUrl;
     private UserDto assigned;
     private TaskTypeDto taskTypeDto;
+    private String publicId;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 }

@@ -3,6 +3,8 @@ package com.develop.taskmanager.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @ToString
@@ -20,12 +22,14 @@ public class Task extends BaseEntity{
     private User assigned;
     @ManyToOne
     private TaskType taskType;
+    private String publicId = UUID.randomUUID().toString();
 
-    public Task(String title, String description, String imageUrl, User assigned, TaskType taskType) {
+    public Task(String title, String description, String imageUrl, User assigned, TaskType taskType,String publicId) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
         this.assigned = assigned;
         this.taskType = taskType;
+        this.publicId = publicId;
     }
 }
