@@ -24,12 +24,11 @@ public class Task extends BaseEntity{
     private TaskType taskType;
     private String publicId = UUID.randomUUID().toString();
 
-    public Task(String title, String description, String imageUrl, User assigned, TaskType taskType,String publicId) {
+    public Task(String title, String description, String imageUrl, User assigned, TaskType taskType) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
         this.assigned = assigned;
         this.taskType = taskType;
-        this.publicId = publicId;
     }
 }

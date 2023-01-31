@@ -29,6 +29,7 @@ public class TaskConverter {
                 from.getImageUrl(),
                 userConverter.convertUserToUserDto(from.getAssigned()),
                 taskTypeConverter.convertTaskTypeToTaskTypeDto(from.getTaskType()),
+                from.getPublicId(),
                 from.getCreateDate(),
                 from.getUpdateDate()
         );
