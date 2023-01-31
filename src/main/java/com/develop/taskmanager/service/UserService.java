@@ -9,6 +9,7 @@ import com.develop.taskmanager.model.User;
 import com.develop.taskmanager.repository.ConfirmCodeRepository;
 import com.develop.taskmanager.repository.UserRepository;
 import com.develop.taskmanager.util.MailSendService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -24,6 +25,7 @@ public class UserService {
     private final UserConverter userConverter;
     private final ConfirmCodeRepository confirmCodeRepository;
 
+
     public UserService(MailSendService mailSendService,
                        ConfirmCodeService confirmCodeService,
                        UserRepository userRepository,
@@ -37,8 +39,8 @@ public class UserService {
     }
 
     public UserDto save(CreateUserRequest request){
-        var saved = userConverter.toEntity(request);
 
+        var saved = userConverter.toEntity(request);
         if (userRepository.existsUserByMail(saved.getMail()) || Objects.isNull(saved.getUserType())) {
             throw new RuntimeException();
         }
@@ -95,4 +97,5 @@ public class UserService {
         return userRepository.findUserByMail(mail)
                 .orElseThrow(RuntimeException::new);
     }
+
 }

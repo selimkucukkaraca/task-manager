@@ -5,15 +5,19 @@ import com.develop.taskmanager.dto.UserTypeDto;
 import com.develop.taskmanager.dto.request.CreateUserRequest;
 import com.develop.taskmanager.model.User;
 import com.develop.taskmanager.service.UserTypeService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter {
 
     private final UserTypeService userTypeService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserConverter(UserTypeService userTypeService) {
+    public UserConverter(UserTypeService userTypeService,
+                         PasswordEncoder passwordEncoder) {
         this.userTypeService = userTypeService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserDto convertUserToUserDto(User from){
@@ -29,7 +33,7 @@ public class UserConverter {
     public User toEntity(CreateUserRequest request){
         return new User(
                 request.getUsername(),
-                request.getPassword(),
+                passwordEncoder.encode(request.getPassword()),
                 request.getMail(),
                 userTypeService.getUserTypeByType(request.getUserType())
         );
