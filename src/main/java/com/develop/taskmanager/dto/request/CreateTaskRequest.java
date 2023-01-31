@@ -1,7 +1,6 @@
 package com.develop.taskmanager.dto.request;
 
 import lombok.Data;
-import com.develop.taskmanager.model.TaskType;
 
 @Data
 public class CreateTaskRequest {
@@ -9,5 +8,5 @@ public class CreateTaskRequest {
     private String description;
     private String imageUrl;
     private String assignedMail;
-    private String  taskType;
+    private String taskType;
 }

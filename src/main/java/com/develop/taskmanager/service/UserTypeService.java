@@ -38,6 +38,5 @@ public class UserTypeService {
                 .stream()
                 .map(userType -> new UserTypeDto(userType.getType()))
                 .collect(Collectors.toList());
-
     }
 }

@@ -18,4 +18,7 @@ public class TaskType extends BaseEntity{
     private Long id;
     private String type;
 
+    public TaskType(String type) {
+        this.type = type;
+    }
 }
