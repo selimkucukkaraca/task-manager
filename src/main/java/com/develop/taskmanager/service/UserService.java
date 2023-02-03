@@ -4,6 +4,8 @@ import com.develop.taskmanager.dto.UserDto;
 import com.develop.taskmanager.dto.converter.UserConverter;
 import com.develop.taskmanager.dto.request.CreateUserRequest;
 
+import com.develop.taskmanager.exception.NotFoundException;
+import com.develop.taskmanager.exception.generic.GenericExistException;
 import com.develop.taskmanager.model.ConfirmCode;
 import com.develop.taskmanager.model.User;
 import com.develop.taskmanager.repository.ConfirmCodeRepository;
@@ -41,7 +43,7 @@ public class UserService {
 
         var saved = userConverter.toEntity(request);
         if (userRepository.existsUserByMail(saved.getMail()) || Objects.isNull(saved.getUserType())) {
-            throw new RuntimeException();
+            throw new GenericExistException("user already exist , mail : " + saved.getMail());
         }
         userRepository.save(saved);
         return userConverter.convertUserToUserDto(saved);
@@ -49,7 +51,7 @@ public class UserService {
 
     public UserDto getByMail(String mail) {
         User fromDbUser = userRepository.findUserByMail(mail)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new NotFoundException("mail not found : " + mail));
 
         return userConverter.convertUserToUserDto(fromDbUser);
     }
@@ -94,7 +96,7 @@ public class UserService {
 
     public User getUserByMail(String mail){
         return userRepository.findUserByMail(mail)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new NotFoundException(""));
     }
 
 }
